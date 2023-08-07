@@ -23,7 +23,7 @@
 
             // Realize a chamada AJAX para o seu script R no GitHub Actions ou em outro lugar
             // Substitua o URL pela localização do seu script R
-            var url = "https://api.github.com/repos/seu-usuario/covid-prediction/dispatches";
+            var url = "https://api.github.com/repos/geanfernandess/covid-prediction/";
             var data = {
                 event_type: "realizar-predicao",
                 client_payload: {
@@ -34,7 +34,7 @@
             fetch(url, {
                 method: "POST",
                 headers: {
-                    "Authorization": "Bearer SEU_TOKEN_GITHUB", // Substitua pelo seu token de acesso pessoal do GitHub
+                    "Authorization": "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", // Substitua pelo seu token de acesso pessoal do GitHub
                     "Accept": "application/vnd.github.everest-preview+json"
                 },
                 body: JSON.stringify(data)
