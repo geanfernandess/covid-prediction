@@ -1,6 +1,6 @@
 library(tidyverse)
 library(tidymodels)
-
+cat("{\"cat\":}")
 # Carregar o modelo
 modelo <- readRDS("modelo_covid.rds")
 
