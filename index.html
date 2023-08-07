@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Predição da Evolução de Pacientes com Covid-19</title>
+</head>
+<body>
+    <h1>Predição da Evolução de Pacientes com Covid-19</h1>
+    <form id="predicao-form">
+        <!-- Campos de entrada para atributos do paciente (exemplo: idade) -->
+        <label for="idade">Idade:</label>
+        <input type="number" id="idade" name="idade" required><br><br>
+
+        <!-- Adicione outros campos de entrada aqui, se necessário -->
+
+        <button type="button" onclick="realizarPredicao()">Realizar Predição</button>
+    </form>
+
+    <div id="resultado-predicao"></div>
+
+    <script>
+        function realizarPredicao() {
+            var idade = document.getElementById("idade").value;
+
+            // Realize a chamada AJAX para o seu script R no GitHub Actions ou em outro lugar
+            // Substitua o URL pela localização do seu script R
+            var url = "https://api.github.com/repos/seu-usuario/covid-prediction/dispatches";
+            var data = {
+                event_type: "realizar-predicao",
+                client_payload: {
+                    idade: idade
+                }
+            };
+
+            fetch(url, {
+                method: "POST",
+                headers: {
+                    "Authorization": "Bearer SEU_TOKEN_GITHUB", // Substitua pelo seu token de acesso pessoal do GitHub
+                    "Accept": "application/vnd.github.everest-preview+json"
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("resultado-predicao").innerHTML = "Evolução Prevista: " + data.prediction;
+            })
+            .catch(error => {
+                console.error("Erro:", error);
+            });
+        }
+    </script>
+</body>
+</html>

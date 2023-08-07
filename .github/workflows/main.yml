@@ -1,0 +1,23 @@
+name: Realizar Predição
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  predicao:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v2
+
+      - name: Configurar R
+        uses: r-lib/actions/setup-r@v1
+
+      - name: Instalar pacotes
+        run: |
+          R -e "install.packages(c('tidyverse', 'tidymodels'))"
+
+      - name: Executar Predição
+        run: Rscript prever.R ${{ github.event.client_payload.idade }}
