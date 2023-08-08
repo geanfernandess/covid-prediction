@@ -1,7 +1,6 @@
-install.packages("tidyverse")
 install.packages("tidymodels")
 
-library(tidyverse)
+#library(tidyverse)
 library(tidymodels)
 
 # Carregar o modelo
